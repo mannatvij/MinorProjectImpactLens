@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane style="-fx-background-color: #141414;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.minorproject.DashboardController">
+
+   <!-- Left Sidebar -->
+   <left>
+      <VBox alignment="TOP_CENTER" prefWidth="200.0" spacing="20" style="-fx-background-color: #000000; -fx-border-color: #ff8000; -fx-padding: 20;">
+
+         <ImageView fx:id="imageView" fitHeight="197.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@impact_lens.jpg" />
+            </image>
+         </ImageView>
+
+         <Button fx:id="impactTimelineBtn" mnemonicParsing="false" onAction="#openImpactTimeline" prefWidth="160" text="Impact Charts">
+            <font>
+               <Font size="10.0" />
+            </font></Button>
+
+         <Button fx:id="NamoMonk" mnemonicParsing="false" onAction="#handleAdminClick" prefWidth="160" text="NamoMonk" />
+
+         <Button fx:id="impactStoryButton" mnemonicParsing="false" onAction="#openImpactStory" prefWidth="160" text="Impact Story" />
+      </VBox>
+   </left>
+
+   <!-- Main Content -->
+   <center>
+      <VBox alignment="CENTER" spacing="25" style="-fx-padding: 40;">
+
+         <Label text="Our Environmental Impact" textFill="WHITE">
+            <font>
+               <Font name="Microsoft Tai Le Bold" size="40.0" />
+            </font>
+         </Label>
+
+         <Label fx:id="total_trees_planted" text="Trees Planted:" textFill="WHITE">
+            <font>
+               <Font name="Microsoft Tai Le Bold" size="30.0" />
+            </font>
+         </Label>
+
+         <Label fx:id="total_bottles_registered" text="Plastic Bottles Removed:" textFill="WHITE">
+            <font>
+               <Font name="Microsoft Tai Le Bold" size="30.0" />
+            </font>
+         </Label>
+
+         <Label fx:id="impactLabel" text="Impact Data Loading..." textFill="WHITE" wrapText="true">
+            <font>
+               <Font name="Microsoft Tai Le Bold" size="20.0" />
+            </font>
+         </Label>
+      </VBox>
+   </center>
+</BorderPane>
