@@ -38,7 +38,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Initialization logic if needed
+
     }
 
     public void loginButtonOnAction(ActionEvent event) {
@@ -91,7 +91,7 @@ public class LoginController implements Initializable {
     }
 
     private void fetchImpactData() {
-        String apiUrl = "https://56772816-de83-4392-8a58-6bc8e09823a8.mock.pstmn.io";
+        String apiUrl = "https://sprout-app.thegoodapi.com/app/public/metrics?shop_name=namomonk.myshopify.com";
 
         new Thread(() -> {
             try {
@@ -114,7 +114,7 @@ public class LoginController implements Initializable {
                     int treesPlanted = jsonResponse.optInt("trees_planted", 0);
                     int plasticBottles = jsonResponse.optInt("plastic_bottles_removed", 0);
 
-                    Platform.runLater(() -> openDashboard(treesPlanted, plasticBottles)); // Open dashboard with API data
+                    Platform.runLater(() -> openDashboard(treesPlanted, plasticBottles));
 
                 } else {
                     Platform.runLater(() -> loginMessageLabel.setText("Failed to load impact data"));

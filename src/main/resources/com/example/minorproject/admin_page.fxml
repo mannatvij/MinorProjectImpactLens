@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.paint.Color?>
+
+<?import javafx.scene.chart.PieChart?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.minorproject.AdminPageController">
+
+    <!-- Background Image -->
+    <ImageView fitHeight="600" fitWidth="512" preserveRatio="false">
+        <image>
+            <Image url="@admincontrolimage.jpg" />
+        </image>
+    </ImageView>
+
+    <!-- Optional semi-transparent overlay -->
+    <Rectangle width="512" height="600" fill="#00000055" />
+
+    <!-- Wrapper VBox to keep things centered and sized -->
+    <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;" maxWidth="500">
+
+        <!-- Top Heading -->
+        <Label fx:id="nameLabel" style="-fx-font-size: 25; -fx-text-fill: white;" />
+
+        <!-- Centered Info -->
+        <VBox spacing="10" alignment="CENTER">
+            <Label fx:id="memberSinceLabel" style="-fx-font-size: 20; -fx-text-fill: white;" />
+            <Label fx:id="treesPlantedLabel" style="-fx-font-size: 16; -fx-text-fill: lightgreen;" />
+            <PieChart fx:id="treePieChart" prefWidth="300" prefHeight="300" style="-fx-background-color: transparent;" />
+            <Label fx:id="apiLabel" text="Powered by theGoodAPI" style="-fx-text-fill: white;" />
+            <Text fx:id="descriptionText" wrappingWidth="300" style="-fx-fill: white;" />
+        </VBox>
+    </VBox>
+
+</StackPane>
+

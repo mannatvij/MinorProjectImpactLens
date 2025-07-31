@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Impact Map</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        html, body, #map {
+            height: 100%;
+            margin: 0;
+        }
+        .popup {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    const map = L.map('map').setView([0, 0], 2);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    fetch('impact_data.json')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(point => {
+                const marker = L.circleMarker([point.lat, point.lon], {
+                    radius: Math.log(point.trees) / 1.2,
+                    fillColor: "#4CAF50",
+                    color: "#006400",
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 0.7
+                }).addTo(map);
+
+                marker.bindPopup(
+                    `<div class="popup"><b>${point.country}</b><br/>Trees planted: ${point.trees.toLocaleString()}</div>`
+                );
+            });
+        });
+</script>
+</body>
+</html>

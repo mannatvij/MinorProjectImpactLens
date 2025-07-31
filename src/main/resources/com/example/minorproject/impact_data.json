@@ -1,0 +1,32 @@
+[
+  {
+    "country": "Madagascar",
+    "lat": -18.7669,
+    "lon": 46.8691,
+    "trees": 1408651
+  },
+  {
+    "country": "Kenya",
+    "lat": -0.0236,
+    "lon": 37.9062,
+    "trees": 849070
+  },
+  {
+    "country": "Indonesia",
+    "lat": -0.7893,
+    "lon": 113.9213,
+    "trees": 51118
+  },
+  {
+    "country": "Haiti",
+    "lat": 18.9712,
+    "lon": -72.2852,
+    "trees": 296
+  },
+  {
+    "country": "Brazil",
+    "lat": -14.2350,
+    "lon": -51.9253,
+    "trees": 20043
+  }
+]

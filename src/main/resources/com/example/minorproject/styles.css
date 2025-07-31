@@ -1,0 +1,50 @@
+.root {
+    -fx-background-image: url("ales-krivec-f0OvuwZv2d4-unsplash.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+.heading {
+    -fx-font-family: "Migra Extra Light";
+    -fx-font-size: 32px;
+    -fx-text-fill: white;
+}
+.body-text {
+    -fx-font-family: "Archivo Thin";
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+}
+.button {
+    -fx-background-color: linear-gradient(to right, #2F4F4F, #3E8E41);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #FFD700; /* Gold border */
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 2, 2);
+    -fx-transition: all 0.3s;
+}
+
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #3E8E41, #228B22);
+    -fx-border-color: #FFA500;
+}
+
+
+.button:pressed {
+    -fx-background-color: #006400;
+    -fx-translate-y: 2px;
+}
+
+
+.impact-title {
+    -fx-font-family: 'MigraExtraLight';
+    -fx-font-size: 36px;
+    -fx-text-fill: white;
+}
+
+

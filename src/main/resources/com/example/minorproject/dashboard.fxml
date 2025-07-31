@@ -1,66 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane style="-fx-background-color: #F4F4F4; -fx-padding: 20px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.minorproject.DashboardController">
+<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.minorproject.DashboardController">
+
 
     <left>
-        <VBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: #333; -fx-padding: 15px;">
-            <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Dashboard Views" />
-
-            <Button fx:id="btnOverview" style="-fx-background-color: #444; -fx-text-fill: white; -fx-font-size: 16px;" text="Overview" />
-            <Button fx:id="btnMonthlyChart" style="-fx-background-color: #444; -fx-text-fill: white; -fx-font-size: 16px;" text="Monthly Chart" />
-            <Button fx:id="btnYearlyChart" style="-fx-background-color: #444; -fx-text-fill: white; -fx-font-size: 16px;" text="Yearly Chart" />
+        <VBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: rgba(30, 136, 229, 0.8); -fx-padding: 15px;">
+            <ImageView fx:id="imgLogo" fitHeight="50" fitWidth="50" />
+            <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Impact Lens" />
+            <Button fx:id="btnOverview" style="-fx-background-color: #1565C0; -fx-text-fill: white;" text="Overview" />
+            <Button fx:id="btnMonthly" style="-fx-background-color: #1565C0; -fx-text-fill: white;" text="Monthly Growth" />
+            <Button fx:id="btnWeekly" style="-fx-background-color: #1565C0; -fx-text-fill: white;" text="Weekly Trends" />
+            <Button fx:id="btnSustainability" style="-fx-background-color: #1565C0; -fx-text-fill: white;" text="Sustainability Tips" />
         </VBox>
     </left>
 
+    <center>
+        <TabPane fx:id="tabPane">
+            <Tab text="Overview">
+                <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20px;">
 
-    <right>
-        <VBox alignment="CENTER" spacing="20" style="-fx-background-color: #FFF; -fx-padding: 20px; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);">
+                    <!-- Title -->
+                    <Label styleClass="heading" text="Our Environmental Impact" />
 
-            <Label style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2E7D32;" text="Sustainability Impact" />
+                    <!-- Trees Planted -->
+                    <Label styleClass="body-text" text="Total Trees Planted:" />
+                    <Label fx:id="total_trees_planted" styleClass="body-text" text="0" />
 
-            <GridPane alignment="CENTER" hgap="30" vgap="30">
-                <Label text="Trees Planted:" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2E7D32;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Label fx:id="treesPlantedLabel" text="0" style="-fx-font-size: 24px; -fx-text-fill: #388E3C;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <!-- Plastic Bottles Removed -->
+                    <Label styleClass="body-text" text="Plastic Bottles Removed:" />
+                    <Label fx:id="total_bottles_registered" styleClass="body-text" text="0" />
 
-                <Label text="Plastic Bottles Removed:" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1565C0;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <Label fx:id="plasticBottlesLabel" text="0" style="-fx-font-size: 24px; -fx-text-fill: #1E88E5;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                </VBox>
+            </Tab>
 
-                <columnConstraints>
-               <ColumnConstraints />
-               <ColumnConstraints />
-            </columnConstraints>
-            <rowConstraints>
-               <RowConstraints />
-               <RowConstraints />
-            </rowConstraints>
-            </GridPane>
-        </VBox>
-    </right>
+            <Tab text="Monthly Growth">
+                <VBox alignment="CENTER" spacing="20">
+                    <BarChart fx:id="monthlyChart">
+                        <xAxis><CategoryAxis /></xAxis>
+                        <yAxis><NumberAxis /></yAxis>
+                    </BarChart>
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="Contributions Over Time:" />
+                </VBox>
+            </Tab>
 
-    <bottom>
-        <VBox spacing="15" style="-fx-background-color: #FFFFFF; -fx-padding: 20px; -fx-border-radius: 10px; -fx-background-radius: 10px;                      -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);" BorderPane.alignment="CENTER">
+            <Tab text="Weekly Trends">
+                <LineChart fx:id="weeklyChart">
+                    <xAxis><CategoryAxis /></xAxis>
+                    <yAxis><NumberAxis /></yAxis>
+                </LineChart>
+            </Tab>
 
-            <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #444;" text="Contribution Over Time" />
-
-            <LineChart fx:id="contributionChart" title="Contributions Over Time">
-                <xAxis>
-                    <CategoryAxis label="Time Period" fx:id="xAxis" />
-                </xAxis>
-                <yAxis>
-                    <NumberAxis fx:id="yAxis" label="Contributions" />
-                </yAxis>
-            </LineChart>
-        </VBox>
-    </bottom>
+            <Tab text="Sustainability Tips">
+                <VBox alignment="CENTER" spacing="20" style="-fx-background-color: rgba(165, 214, 167, 0.8); -fx-padding: 20px;">
+                    <Label style="-fx-text-fill: #1B5E20; -fx-font-size: 18px; -fx-font-weight: bold;" text="Sustainability Tips and Highlights" />
+                    <Label style="-fx-text-fill: #2E7D32;" text="Tip 1: Use reusable bags instead of plastic." />
+                    <Label style="-fx-text-fill: #2E7D32;" text="Tip 2: Save water by turning off taps when not in use." />
+                    <Label style="-fx-text-fill: #2E7D32;" text="Tip 3: Recycle paper, plastic, and glass to reduce waste." />
+                    <Label style="-fx-text-fill: #2E7D32;" text="Tip 4: Plant trees to help absorb CO2 and provide oxygen." />
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
 </BorderPane>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.BarChart?>
+
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.ScatterChart?>
+<?import javafx.scene.layout.GridPane?>
+<BorderPane fx:controller="com.example.minorproject.ImpactTimelineController"
+            xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/8"
+            prefWidth="800" prefHeight="600">
+
+    <top>
+        <VBox spacing="10">
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Label text="Select Country:" />
+                <ComboBox fx:id="countryComboBox" promptText="Choose country..." />
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="lineChartBtn" text="Timeline Chart" onAction="#showLineChart"/>
+                <Button fx:id="barChartBtn" text="Yearly Contribution" onAction="#showBarChart"/>
+                <Button fx:id="pieChartBtn" text="Organization Share" onAction="#showPieChart"/>
+                <Button fx:id="stackedAreaChartBtn" text="Show Stacked Area Chart" onAction="#updateStackedAreaChart"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <StackPane fx:id="chartStack">
+            <LineChart fx:id="timelineChart" title="Trees Planted Over Time" visible="true">
+                <xAxis>
+                    <CategoryAxis label="Month" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Trees Planted" />
+                </yAxis>
+            </LineChart>
+
+            <BarChart fx:id="barChart" title="Yearly Contributions by Organization" visible="false">
+                <xAxis>
+                    <CategoryAxis label="Year" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Trees Planted" />
+                </yAxis>
+            </BarChart>
+
+            <PieChart fx:id="orgPieChart" title="Overall Contribution by Organization" visible="false"/>
+
+
+            <!-- Stacked Area Chart -->
+            <AreaChart fx:id="stackedAreaChart" visible="false">
+                <xAxis>
+                    <CategoryAxis label="Month" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Bottles Collected" />
+                </yAxis>
+            </AreaChart>
+        </StackPane>
+    </center>
+</BorderPane>
+
+

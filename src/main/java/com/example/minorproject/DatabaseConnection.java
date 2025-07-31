@@ -1,10 +1,12 @@
 package com.example.minorproject;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseConnection {
-    public Connection databaseLink;
-    public Connection getConnection() {
+    private static Connection databaseLink;
+
+    public static Connection getConnection() {
         String databaseName = "minor_project";
         String databaseUser = "root";
         String databasePassword = "Jaigurudev@13";
@@ -12,14 +14,15 @@ public class DatabaseConnection {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
-            System.out.println("✅ Database Connection Successful!");
+            if (databaseLink == null || databaseLink.isClosed()) {
+                databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+                System.out.println("✅ Database Connection Successful!");
+            }
         } catch (Exception e) {
+            System.err.println("❌ Database Connection Failed: " + e.getMessage());
             e.printStackTrace();
-            System.out.println("Database Connection Failed!");
         }
         return databaseLink;
     }
-
-
 }
+
